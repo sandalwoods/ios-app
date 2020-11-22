@@ -1,12 +1,12 @@
 import UIKit
-import YYImage
+import SDWebImage
 import Photos
 import MixinServices
 
 final class GalleryImageItemViewController: GalleryItemViewController {
     
     let scrollView = UIScrollView()
-    let imageView = YYAnimatedImageView()
+    let imageView = SDAnimatedImageView()
     
     private(set) var detectedUrl: URL?
     

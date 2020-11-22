@@ -1,5 +1,5 @@
 import UIKit
-import YYImage
+import SDWebImage
 import Lottie
 import Alamofire
 import MixinServices

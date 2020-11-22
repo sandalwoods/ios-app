@@ -1,5 +1,5 @@
 import UIKit
-import YYImage
+import SDWebImage
 import Lottie
 import MixinServices
 
@@ -18,11 +18,11 @@ class AnimatedStickerView: UIView {
         }
     }
     
-    private(set) weak var imageViewIfLoaded: YYAnimatedImageView?
+    private(set) weak var imageViewIfLoaded: SDAnimatedImageView?
     private(set) weak var animationViewIfLoaded: LOTAnimationView?
     
-    private lazy var imageView: YYAnimatedImageView = {
-        let view = YYAnimatedImageView()
+    private lazy var imageView: SDAnimatedImageView = {
+        let view = SDAnimatedImageView()
         view.autoPlayAnimatedImage = autoPlayAnimatedImage
         view.contentMode = contentMode
         addSubview(view)

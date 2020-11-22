@@ -1,5 +1,5 @@
 import UIKit
-import YYImage
+import SDWebImage
 import Photos
 import MixinServices
 

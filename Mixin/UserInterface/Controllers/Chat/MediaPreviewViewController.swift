@@ -1,6 +1,6 @@
 import UIKit
 import Photos
-import YYImage
+import SDWebImage
 import CoreServices
 import MixinServices
 
@@ -8,7 +8,7 @@ final class MediaPreviewViewController: UIViewController {
     
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var imageView: YYAnimatedImageView!
+    @IBOutlet weak var imageView: SDAnimatedImageView!
     @IBOutlet weak var activityIndicator: ActivityIndicatorView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
@@ -441,7 +441,7 @@ extension MediaPreviewViewController {
             guard let uti = uti, UTTypeConformsTo(uti as CFString, kUTTypeGIF) else {
                 return
             }
-            guard let data = data, let image = YYImage(data: data) else {
+            guard let data = data, let image = SDAnimatedImage(data: data) else {
                 return
             }
             self?.imageView.image = image

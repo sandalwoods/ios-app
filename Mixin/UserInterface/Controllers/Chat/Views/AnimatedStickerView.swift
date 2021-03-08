@@ -25,6 +25,7 @@ class AnimatedStickerView: UIView {
         let view = SDAnimatedImageView()
         view.autoPlayAnimatedImage = autoPlayAnimatedImage
         view.contentMode = contentMode
+        view.maxBufferSize = .max
         addSubview(view)
         view.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()

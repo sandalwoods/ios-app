@@ -23,7 +23,7 @@ class AuthorizationsViewController: UIViewController {
     
     class func instance() -> UIViewController {
         let vc = R.storyboard.setting.authorization()!
-        return ContainerViewController.instance(viewController: vc, title: Localized.SETTING_AUTHORIZATIONS)
+        return ContainerViewController.instance(viewController: vc, title: R.string.localizable.setting_authorizations())
     }
     
     override func viewDidLoad() {

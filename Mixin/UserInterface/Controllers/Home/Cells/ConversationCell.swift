@@ -51,7 +51,7 @@ class ConversationCell: ModernSelectedBackgroundCell {
             messageStatusImageView.isHidden = false
             messageStatusImageView.image = #imageLiteral(resourceName: "ic_status_sending")
             messageTypeImageView.isHidden = true
-            contentLabel.text = Localized.CHAT_DECRYPTION_FAILED_HINT(username: item.senderFullName)
+            contentLabel.text = R.string.localizable.chat_decryption_failed_hint(item.senderFullName)
         } else if item.messageStatus == MessageStatus.UNKNOWN.rawValue {
             messageStatusImageView.isHidden = true
             messageTypeImageView.isHidden = true

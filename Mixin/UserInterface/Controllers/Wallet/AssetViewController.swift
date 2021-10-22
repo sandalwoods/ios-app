@@ -75,16 +75,16 @@ class AssetViewController: UIViewController {
         guard let asset = self.asset else {
             return
         }
-        let alc = UIAlertController(title: Localized.ACTION_SEND_TO, message: nil, preferredStyle: .actionSheet)
-        alc.addAction(UIAlertAction(title: Localized.CHAT_MENU_CONTACT, style: .default, handler: { [weak self] (_) in
+        let alc = UIAlertController(title: R.string.localizable.action_send_to(), message: nil, preferredStyle: .actionSheet)
+        alc.addAction(UIAlertAction(title: R.string.localizable.chat_menu_contact(), style: .default, handler: { [weak self] (_) in
             let vc = TransferReceiverViewController.instance(asset: asset)
             self?.navigationController?.pushViewController(vc, animated: true)
         }))
-        alc.addAction(UIAlertAction(title: Localized.WALLET_ADDRESS, style: .default, handler: { [weak self](_) in
+        alc.addAction(UIAlertAction(title: R.string.localizable.wallet_address(), style: .default, handler: { [weak self](_) in
             let vc = AddressViewController.instance(asset: asset)
             self?.navigationController?.pushViewController(vc, animated: true)
         }))
-        alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         self.present(alc, animated: true, completion: nil)
     }
     
@@ -115,7 +115,7 @@ extension AssetViewController: ContainerViewControllerDelegate {
     func barRightButtonTappedAction() {
         let alc = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let asset = self.asset!
-        let toggleAssetHiddenTitle = AppGroupUserDefaults.Wallet.hiddenAssetIds[asset.assetId] == nil ? Localized.WALLET_MENU_HIDE_ASSET : Localized.WALLET_MENU_SHOW_ASSET
+        let toggleAssetHiddenTitle = AppGroupUserDefaults.Wallet.hiddenAssetIds[asset.assetId] == nil ? R.string.localizable.wallet_menu_hide_asset() : R.string.localizable.wallet_menu_show_asset()
         alc.addAction(UIAlertAction(title: toggleAssetHiddenTitle, style: .default, handler: { [weak self](_) in
             guard let weakSelf = self else {
                 return
@@ -128,7 +128,7 @@ extension AssetViewController: ContainerViewControllerDelegate {
             NotificationCenter.default.post(onMainThread: Application.assetVisibilityDidChangeNotification, object: self)
             weakSelf.navigationController?.popViewController(animated: true)
         }))
-        alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         self.present(alc, animated: true, completion: nil)
     }
     

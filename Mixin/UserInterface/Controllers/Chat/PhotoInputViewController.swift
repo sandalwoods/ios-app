@@ -155,7 +155,7 @@ extension PhotoInputViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.photo_album, for: indexPath)!
         switch Section(rawValue: indexPath.section)! {
         case .allPhotos:
-            cell.textLabel.text = Localized.ALL_PHOTOS
+            cell.textLabel.text = R.string.localizable.all_photos()
         case .smartAlbums:
             cell.textLabel.text = sortedSmartAlbums?[indexPath.row].localizedTitle ?? ""
         case .userCollections:

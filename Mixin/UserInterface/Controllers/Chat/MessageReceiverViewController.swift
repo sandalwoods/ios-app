@@ -18,7 +18,7 @@ class MessageReceiverViewController: PeerViewController<[MessageReceiver], Check
     class func instance(content: MessageContent) -> UIViewController {
         let vc = MessageReceiverViewController()
         vc.messageContent = content
-        return ContainerViewController.instance(viewController: vc, title: Localized.ACTION_SHARE_TO)
+        return ContainerViewController.instance(viewController: vc, title: R.string.localizable.action_share_to())
     }
     
     override func viewDidLoad() {

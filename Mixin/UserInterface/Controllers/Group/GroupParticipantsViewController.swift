@@ -28,7 +28,7 @@ class GroupParticipantsViewController: UserItemPeerViewController<GroupParticipa
     class func instance(conversation: ConversationItem) -> UIViewController {
         let vc = GroupParticipantsViewController()
         vc.conversation = conversation
-        return ContainerViewController.instance(viewController: vc, title: Localized.GROUP_MENU_PARTICIPANTS)
+        return ContainerViewController.instance(viewController: vc, title: R.string.localizable.group_menu_participants())
     }
     
     override func viewDidLoad() {
@@ -63,10 +63,10 @@ class GroupParticipantsViewController: UserItemPeerViewController<GroupParticipa
             return
         }
         let alc = UIAlertController(title: nil, message: user.fullName, preferredStyle: .actionSheet)
-        alc.addAction(UIAlertAction(title: Localized.GROUP_PARTICIPANT_MENU_INFO, style: .default, handler: { (action) in
+        alc.addAction(UIAlertAction(title: R.string.localizable.group_participant_menu_info(), style: .default, handler: { (action) in
             self.showInfo(user: user)
         }))
-        alc.addAction(UIAlertAction(title: Localized.GROUP_PARTICIPANT_MENU_SEND, style: .default, handler: { (action) in
+        alc.addAction(UIAlertAction(title: R.string.localizable.group_participant_menu_send(), style: .default, handler: { (action) in
             self.sendMessage(to: user)
         }))
         
@@ -82,11 +82,11 @@ class GroupParticipantsViewController: UserItemPeerViewController<GroupParticipa
             }
         }
         if myRole == ParticipantRole.OWNER.rawValue || (user.role.isEmpty && !myRole.isEmpty) {
-            alc.addAction(UIAlertAction(title: Localized.GROUP_PARTICIPANT_MENU_REMOVE, style: .destructive, handler: { (action) in
+            alc.addAction(UIAlertAction(title: R.string.localizable.group_participant_menu_remove(), style: .destructive, handler: { (action) in
                 self.remove(userId: user.userId)
             }))
         }
-        alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         present(alc, animated: true, completion: nil)
     }
     
@@ -129,16 +129,16 @@ extension GroupParticipantsViewController: ContainerViewControllerDelegate {
             return
         }
         let alc = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alc.addAction(UIAlertAction(title: Localized.GROUP_NAVIGATION_TITLE_ADD_MEMBER, style: .default, handler: { (_) in
+        alc.addAction(UIAlertAction(title: R.string.localizable.group_navigation_title_add_member(), style: .default, handler: { (_) in
             let id = self.conversation.conversationId
             let vc = AddMemberViewController.instance(appendingMembersToConversationId: id)
             self.navigationController?.pushViewController(vc, animated: true)
         }))
-        alc.addAction(UIAlertAction(title: Localized.GROUP_NAVIGATION_TITLE_INVITE_LINK, style: .default, handler: { (_) in
+        alc.addAction(UIAlertAction(title: R.string.localizable.group_navigation_title_invite_link(), style: .default, handler: { (_) in
             let vc = InviteLinkViewController.instance(conversation: self.conversation)
             self.navigationController?.pushViewController(vc, animated: true)
         }))
-        alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         present(alc, animated: true, completion: nil)
     }
     

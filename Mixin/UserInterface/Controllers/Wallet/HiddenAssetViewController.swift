@@ -8,7 +8,7 @@ class HiddenAssetViewController: UIViewController {
     private var assets = [AssetItem]()
 
     private lazy var assetAction: UITableViewRowAction = {
-        let action = UITableViewRowAction(style: .destructive, title: Localized.ACTION_SHOW, handler: { [weak self] (_, indexPath) in
+        let action = UITableViewRowAction(style: .destructive, title: R.string.localizable.action_show(), handler: { [weak self] (_, indexPath) in
             guard let weakSelf = self else {
                 return
             }
@@ -56,7 +56,7 @@ class HiddenAssetViewController: UIViewController {
                 weakSelf.assets = assets
                 weakSelf.tableView.reloadData()
                 weakSelf.tableView.checkEmpty(dataCount: assets.count,
-                                              text: Localized.WALLET_HIDE_ASSET_EMPTY,
+                                              text: R.string.localizable.wallet_hide_asset_empty(),
                                               photo: R.image.emptyIndicator.ic_hidden_assets()!)
             }
         }
@@ -68,7 +68,7 @@ class HiddenAssetViewController: UIViewController {
 
     class func instance() -> UIViewController {
         let vc = R.storyboard.wallet.hidden_assets()!
-        let container = ContainerViewController.instance(viewController: vc, title: Localized.WALLET_MENU_SHOW_HIDDEN_ASSETS)
+        let container = ContainerViewController.instance(viewController: vc, title: R.string.localizable.wallet_menu_show_hidden_assets())
         return container
     }
     

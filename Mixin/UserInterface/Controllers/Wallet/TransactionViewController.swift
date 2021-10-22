@@ -109,7 +109,7 @@ class TransactionViewController: UIViewController {
         let vc = R.storyboard.wallet.transaction()!
         vc.asset = asset
         vc.snapshot = snapshot
-        let container = ContainerViewController.instance(viewController: vc, title: Localized.TRANSACTION_TITLE)
+        let container = ContainerViewController.instance(viewController: vc, title: R.string.localizable.transaction_title())
         return container
     }
     
@@ -173,7 +173,7 @@ extension TransactionViewController: UITableViewDelegate {
             return
         }
         UIPasteboard.general.string = copy.body
-        showAutoHiddenHud(style: .notification, text: Localized.TOAST_COPIED)
+        showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_copied())
     }
     
 }
@@ -260,14 +260,13 @@ extension TransactionViewController {
     
     private func makeContents() {
         contents = []
-        contents.append((title: Localized.TRANSACTION_ID, subtitle: snapshot.snapshotId))
-        contents.append((title: Localized.TRANSACTION_ASSET, subtitle: asset.name))
+        contents.append((title: R.string.localizable.transaction_id(), subtitle: snapshot.snapshotId))
+        contents.append((title: R.string.localizable.transaction_asset(), subtitle: asset.name))
         switch snapshot.type {
         case SnapshotType.deposit.rawValue, SnapshotType.pendingDeposit.rawValue:
-            contents.append((title: Localized.TRANSACTION_TYPE, subtitle: Localized.TRANSACTION_TYPE_DEPOSIT))
+            contents.append((title: R.string.localizable.transaction_type(), subtitle: R.string.localizable.transaction_type_deposit()))
             if snapshot.type == SnapshotType.pendingDeposit.rawValue, let finished = snapshot.confirmations, let total = asset?.confirmations {
-                contents.append((title: R.string.localizable.transaction_status(), subtitle: Localized.PENDING_DEPOSIT_CONFIRMATION(numerator: finished,
-                denominator: total)))
+                contents.append((title: R.string.localizable.transaction_status(), subtitle: R.string.localizable.pending_deposit_confirmation("\(finished)/\(total)")))
             }
             contents.append((title: R.string.localizable.transaction_hash(), subtitle: snapshot.transactionHash))
             if snapshot.hasSender {
@@ -277,17 +276,17 @@ extension TransactionViewController {
                 contents.append((title: asset.memoLabel, subtitle: snapshot.memo))
             }
         case SnapshotType.transfer.rawValue:
-            contents.append((title: Localized.TRANSACTION_TYPE, subtitle: Localized.TRANSACTION_TYPE_TRANSFER))
+            contents.append((title: R.string.localizable.transaction_type(), subtitle: R.string.localizable.transaction_type_transfer()))
             if snapshot.amount.doubleValue > 0 {
                 contents.append((title: R.string.localizable.wallet_snapshot_transfer_from(), subtitle: snapshot.opponentUserFullName))
             } else {
                 contents.append((title: R.string.localizable.wallet_snapshot_transfer_to(), subtitle: snapshot.opponentUserFullName))
             }
             if snapshot.hasMemo {
-                contents.append((title: Localized.TRANSACTION_MEMO, subtitle: snapshot.memo))
+                contents.append((title: R.string.localizable.transaction_memo(), subtitle: snapshot.memo))
             }
         case SnapshotType.raw.rawValue:
-            contents.append((title: Localized.TRANSACTION_TYPE, subtitle: R.string.localizable.transaction_type_raw()))
+            contents.append((title: R.string.localizable.transaction_type(), R.string.localizable.transaction_type_raw()))
             contents.append((title: R.string.localizable.transaction_hash(), subtitle: snapshot.transactionHash))
             if snapshot.hasSender {
                 contents.append((title: R.string.localizable.wallet_snapshot_transfer_from(), subtitle: snapshot.sender))
@@ -296,25 +295,24 @@ extension TransactionViewController {
                 contents.append((title: R.string.localizable.wallet_snapshot_transfer_to(), subtitle: snapshot.receiver))
             }
             if snapshot.hasMemo {
-                contents.append((title: Localized.TRANSACTION_MEMO, subtitle: snapshot.memo))
+                contents.append((title: R.string.localizable.transaction_memo(), subtitle: snapshot.memo))
             }
         case SnapshotType.withdrawal.rawValue:
-            contents.append((title: Localized.TRANSACTION_TYPE, subtitle:
-                Localized.TRANSACTION_TYPE_WITHDRAWAL))
+            contents.append((title: R.string.localizable.transaction_type(), subtitle: R.string.localizable.transaction_type_withdrawal()))
             contents.append((title: R.string.localizable.transaction_hash(), subtitle: snapshot.transactionHash))
             contents.append((title: R.string.localizable.transaction_receiver(), subtitle: snapshot.receiver))
             if snapshot.hasMemo {
                 contents.append((title: asset.memoLabel, subtitle: snapshot.memo))
             }
         case SnapshotType.fee.rawValue:
-            contents.append((title: Localized.TRANSACTION_TYPE, subtitle: Localized.TRANSACTION_TYPE_FEE))
+            contents.append((title: R.string.localizable.transaction_type(), subtitle: R.string.localizable.transaction_type_fee()))
             contents.append((title: R.string.localizable.transaction_hash(), subtitle: snapshot.transactionHash))
             contents.append((title: R.string.localizable.transaction_receiver(), subtitle: snapshot.receiver))
             if snapshot.hasMemo {
                 contents.append((title: asset.memoLabel, subtitle: snapshot.memo))
             }
         case SnapshotType.rebate.rawValue:
-            contents.append((title: Localized.TRANSACTION_TYPE, subtitle: Localized.TRANSACTION_TYPE_REBATE))
+            contents.append((title: R.string.localizable.transaction_type(), subtitle: R.string.localizable.transaction_type_rebate()))
             contents.append((title: R.string.localizable.transaction_hash(), subtitle: snapshot.transactionHash))
             contents.append((title: R.string.localizable.transaction_receiver(), subtitle: snapshot.receiver))
             if snapshot.hasMemo {
@@ -323,7 +321,7 @@ extension TransactionViewController {
         default:
             break
         }
-        contents.append((title: Localized.TRANSACTION_DATE, subtitle: DateFormatter.dateFull.string(from: snapshot.createdAt.toUTCDate())))
+        contents.append((title: R.string.localizable.transaction_date(), subtitle: DateFormatter.dateFull.string(from: snapshot.createdAt.toUTCDate())))
     }
     
     private func canCopyAction(indexPath: IndexPath) -> (Bool, String) {

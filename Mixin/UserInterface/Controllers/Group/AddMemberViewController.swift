@@ -21,7 +21,7 @@ class AddMemberViewController: PeerViewController<[UserItem], CheckmarkPeerCell,
     class func instance(appendingMembersToConversationId conversationId: String? = nil) -> UIViewController {
         let vc = AddMemberViewController()
         vc.conversationId = conversationId
-        return ContainerViewController.instance(viewController: vc, title: Localized.ACTION_SEND_TO)
+        return ContainerViewController.instance(viewController: vc, title: R.string.localizable.action_send_to())
     }
     
     override func viewDidLoad() {

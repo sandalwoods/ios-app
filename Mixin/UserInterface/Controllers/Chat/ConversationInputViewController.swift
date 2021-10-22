@@ -262,7 +262,7 @@ class ConversationInputViewController: UIViewController {
         let conversationId = composer.conversationId
 
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: { (_) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: { (_) in
             self.deleteConversationButton.isBusy = false
         }))
         alert.addAction(UIAlertAction(title: R.string.localizable.group_menu_delete(), style: .destructive, handler: { (_) in

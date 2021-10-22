@@ -22,7 +22,7 @@ class CirclesViewController: UIViewController {
     }()
     private lazy var deleteAction = {
         UITableViewRowAction(style: .destructive,
-                             title: Localized.MENU_DELETE,
+                             title: R.string.localizable.menu_delete(),
                              handler: tableViewCommitDeleteAction(action:indexPath:))
     }()
     private lazy var editAction: UITableViewRowAction = {

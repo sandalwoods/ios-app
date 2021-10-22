@@ -85,7 +85,15 @@ extension PrivacyViewController {
     private var screenLockTimeoutInterval: String {
         if AppGroupUserDefaults.User.lockScreenWithBiometricAuthentication {
             let timeInterval = AppGroupUserDefaults.User.lockScreenTimeoutInterval
-            return Localized.SCREEN_LOCK_TIMEOUT_INTERVAL(timeInterval)
+            if timeInterval == 0 {
+                return R.string.localizable.setting_screen_lock_timeout_immediately()
+            } else if timeInterval == 60 * 60 {
+                return R.string.localizable.setting_screen_lock_timeout_hour()
+            } else if timeInterval == 60 {
+                return R.string.localizable.setting_screen_lock_timeout_one_minute()
+            } else {
+                return R.string.localizable.setting_screen_lock_timeout_minutes("\(Int(timeInterval / 60))")
+            }
         } else {
             return R.string.localizable.setting_screen_lock_timeout_off();
         }

@@ -7,7 +7,7 @@ class EmergencyContactLoginVerificationCodeViewController: LoginVerificationCode
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = Localized.NAVIGATION_TITLE_ENTER_EMERGENCY_CONTACT_VERIFICATION_CODE(id: emergencyContactIdentityNumber)
+        titleLabel.text = R.string.localizable.navigation_title_enter_emergency_contact_verification_code(emergencyContactIdentityNumber)
         resendButton.isHidden = true
     }
     

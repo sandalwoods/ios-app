@@ -72,11 +72,11 @@ class TransferOutViewController: KeyboardBasedLayoutViewController {
             targetUser = user
             opponentImageView.setImage(with: user)
             container?.setSubtitle(subtitle: user.isCreatedByMessenger ? user.identityNumber : user.userId)
-            container?.titleLabel.text = Localized.ACTION_SEND_TO + " " + user.fullName
+            container?.titleLabel.text = R.string.localizable.action_send_to() + " " + user.fullName
         case .address(let address):
             targetAddress = address
             opponentImageView.image = R.image.wallet.ic_transaction_external_large()
-            container?.titleLabel.text = Localized.ACTION_SEND_TO + " " + address.label
+            container?.titleLabel.text = R.string.localizable.action_send_to() + " " + address.label
             container?.setSubtitle(subtitle: address.fullAddress.toSimpleKey())
             memoView.isHidden = true
             reloadTransactionFeeHint(addressId: address.addressId)
@@ -364,11 +364,11 @@ class TransferOutViewController: KeyboardBasedLayoutViewController {
             }
             self?.chainAsset = chainAsset
             let feeRepresentation = address.fee + " " + chainAsset.symbol
-            var hint = Localized.WALLET_HINT_TRANSACTION_FEE(feeRepresentation: feeRepresentation, name: asset.name)
+            var hint = R.string.localizable.wallet_hint_transaction_fee(feeRepresentation, asset.name)
             var ranges = [(hint as NSString).range(of: feeRepresentation)]
             if address.reserve.doubleValue > 0 {
                 let reserveRepresentation = address.reserve + " " + chainAsset.symbol
-                let reserveHint = Localized.WALLET_WITHDRAWAL_RESERVE(reserveRepresentation: reserveRepresentation, name: chainAsset.name)
+                let reserveHint = R.string.localizable.wallet_withdrawal_reserve(reserveRepresentation, chainAsset.name)
                 let reserveRange = (reserveHint as NSString).range(of: reserveRepresentation)
                 ranges.append(NSRange(location: hint.count + reserveRange.location, length: reserveRange.length))
                 hint += reserveHint

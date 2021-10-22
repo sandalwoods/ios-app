@@ -119,9 +119,9 @@ class AssetSendViewController: UIViewController, MixinNavigationAnimating {
                 }, completionHandler: { (success, error) in
                     DispatchQueue.main.async {
                         if success {
-                            showAutoHiddenHud(style: .notification, text: Localized.CAMERA_SAVE_VIDEO_SUCCESS)
+                            showAutoHiddenHud(style: .notification, text: R.string.localizable.camera_save_video_success())
                         } else {
-                            showAutoHiddenHud(style: .error, text: Localized.CAMERA_SAVE_VIDEO_FAILED)
+                            showAutoHiddenHud(style: .error, text: R.string.localizable.camera_save_video_failed())
                         }
                     }
                 })
@@ -228,7 +228,7 @@ class AssetSendViewController: UIViewController, MixinNavigationAnimating {
                         }
                     } else {
                         weakSelf.sendButton.isBusy = false
-                        weakSelf.alert(Localized.CHAT_SEND_VIDEO_FAILED)
+                        weakSelf.alert(R.string.localizable.chat_send_video_failed())
                     }
                 }
             }
@@ -267,7 +267,7 @@ class AssetSendViewController: UIViewController, MixinNavigationAnimating {
                 guard FileManager.default.fileSize(assetUrl.path) > 0 else {
                     DispatchQueue.main.async {
                         self?.sendButton.isBusy = false
-                        self?.alert(Localized.CHAT_SEND_PHOTO_FAILED)
+                        self?.alert(R.string.localizable.chat_send_photo_failed())
                     }
                     return
                 }
@@ -286,7 +286,7 @@ class AssetSendViewController: UIViewController, MixinNavigationAnimating {
                 } catch {
                     DispatchQueue.main.async {
                         self?.sendButton.isBusy = false
-                        self?.alert(Localized.CHAT_SEND_PHOTO_FAILED)
+                        self?.alert(R.string.localizable.chat_send_photo_failed())
                     }
                     return
                 }
@@ -313,7 +313,7 @@ class AssetSendViewController: UIViewController, MixinNavigationAnimating {
                 default:
                     DispatchQueue.main.async {
                         self?.sendButton.isBusy = false
-                        self?.alert(Localized.CHAT_SEND_PHOTO_FAILED)
+                        self?.alert(R.string.localizable.chat_send_photo_failed())
                     }
                     return
                 }

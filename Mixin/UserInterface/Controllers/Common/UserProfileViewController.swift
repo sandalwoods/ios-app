@@ -173,10 +173,10 @@ final class UserProfileViewController: ProfileViewController {
                 }
                 let toastMessage: String
                 if interval == MuteInterval.none {
-                    toastMessage = Localized.PROFILE_TOAST_UNMUTED
+                    toastMessage = R.string.localizable.profile_toast_unmuted()
                 } else {
                     let dateRepresentation = DateFormatter.dateSimple.string(from: response.muteUntil.toUTCDate())
-                    toastMessage = Localized.PROFILE_TOAST_MUTED(muteUntil: dateRepresentation)
+                    toastMessage = R.string.localizable.profile_toast_muted(dateRepresentation)
                 }
                 hud.set(style: .notification, text: toastMessage)
             case let .failure(error):
@@ -230,7 +230,7 @@ extension UserProfileViewController: ImagePickerControllerDelegate {
     
     func imagePickerController(_ controller: ImagePickerController, didPickImage image: UIImage) {
         guard let avatarBase64 = image.imageByScaling(to: CGSize(width: 1024, height: 1024))?.base64 else {
-            alert(Localized.CONTACT_ERROR_COMPOSE_AVATAR)
+            alert(R.string.localizable.contact_error_compose_avatar())
             return
         }
         let hud = Hud()
@@ -239,7 +239,7 @@ extension UserProfileViewController: ImagePickerControllerDelegate {
             switch result {
             case let .success(account):
                 LoginManager.shared.setAccount(account)
-                hud.set(style: .notification, text: Localized.TOAST_CHANGED)
+                hud.set(style: .notification, text: R.string.localizable.toast_changed())
             case let .failure(error):
                 hud.set(style: .error, text: error.localizedDescription)
             }
@@ -302,8 +302,8 @@ extension UserProfileViewController {
             return
         }
         let window = QrcodeWindow.instance()
-        window.render(title: Localized.CONTACT_MY_QR_CODE,
-                      description: Localized.MYQRCODE_PROMPT,
+        window.render(title: R.string.localizable.contact_my_qr_code(),
+                      description: R.string.localizable.myqrcode_prompt(),
                       account: account)
         window.presentPopupControllerAnimated()
     }
@@ -333,7 +333,7 @@ extension UserProfileViewController {
                 switch result {
                 case let .success(account):
                     LoginManager.shared.setAccount(account)
-                    hud.set(style: .notification, text: Localized.TOAST_CHANGED)
+                    hud.set(style: .notification, text: R.string.localizable.toast_changed())
                 case let .failure(error):
                     hud.set(style: .error, text: error.localizedDescription)
                 }
@@ -401,7 +401,7 @@ extension UserProfileViewController {
                 switch result {
                 case let .success(response):
                     self?.handle(userResponse: response, postContactDidChangeNotificationOnSuccess: false)
-                    hud.set(style: .notification, text: Localized.TOAST_CHANGED)
+                    hud.set(style: .notification, text: R.string.localizable.toast_changed())
                 case let .failure(error):
                     hud.set(style: .error, text: error.localizedDescription)
                 }
@@ -466,7 +466,7 @@ extension UserProfileViewController {
         let hint = user.isBot ? R.string.localizable.profile_remove_hint_bot() : R.string.localizable.profile_remove_hint_contact()
         let removeTitle = user.isBot ? R.string.localizable.profile_remove_bot() : R.string.localizable.profile_remove_contact()
         let alert = UIAlertController(title: hint, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: removeTitle, style: .destructive, handler: { (_) in
             let hud = Hud()
             hud.show(style: .busy, text: "", on: AppDelegate.current.mainWindow)
@@ -487,7 +487,7 @@ extension UserProfileViewController {
     @objc func blockUser() {
         let userId = user.userId
         let alert = UIAlertController(title: R.string.localizable.profile_block_hint(), message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.localizable.profile_block(), style: .destructive, handler: { (_) in
             self.relationshipView.isBusy = true
             let hud = Hud()
@@ -515,7 +515,7 @@ extension UserProfileViewController {
             switch result {
             case let .success(response):
                 self?.handle(userResponse: response, postContactDidChangeNotificationOnSuccess: false)
-                hud.set(style: .notification, text: Localized.TOAST_CHANGED)
+                hud.set(style: .notification, text: R.string.localizable.toast_changed())
             case let .failure(error):
                 hud.set(style: .error, text: error.localizedDescription)
             }
@@ -527,7 +527,7 @@ extension UserProfileViewController {
     @objc func reportUser() {
         let userId = user.userId
         let alert = UIAlertController(title: R.string.localizable.profile_report_hint(), message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.localizable.profile_report(), style: .destructive, handler: { (_) in
             let hud = Hud()
             hud.show(style: .busy, text: "", on: AppDelegate.current.mainWindow)

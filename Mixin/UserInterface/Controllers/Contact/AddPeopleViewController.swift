@@ -23,11 +23,11 @@ class AddPeopleViewController: KeyboardBasedLayoutViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let id = LoginManager.shared.account?.identity_number {
-            myIdLabel.text = Localized.CONTACT_MY_IDENTITY_NUMBER(id: id)
+            myIdLabel.text = R.string.localizable.contact_my_identity_number(id)
         }
         searchButton.isEnabled = false
         keywordTextField.keyboardType = .phonePad
-        keywordTextField.placeholder = Localized.PLACEHOLDER_MIXIN_ID_OR_PHONE
+        keywordTextField.placeholder = R.string.localizable.placeholder_mixin_id_or_phone()
         keywordTextField.addTarget(self, action: #selector(checkKeywordAction), for: .editingChanged)
         keywordTextField.becomeFirstResponder()
     }

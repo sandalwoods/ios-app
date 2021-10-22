@@ -65,7 +65,7 @@
 "title_help" = "Help";
 
 "connection_hint_connecting" = "Connecting";
-"connection_hint_progress" = "Syncing %@%%";
+"connection_hint_progress" = "Syncing %d%%";
 
 "date_format_day" = "hh:mm a";
 "date_format_month" = "E, d MMM";
@@ -457,7 +457,7 @@
 "group_navigation_title_announcement" = "Group Description";
 "group_cell_title_photo" = "Group Photo";
 "group_cell_title_name" = "Group Name";
-"group_section_title_members" = "PARTICIPANTS";
+"group_section_title_members" = "%@PARTICIPANTS";
 "group_button_title_create" = "Create";
 "group_button_title_share_link" = "Share Link";
 "group_button_title_copy_link" = "Copy Link";
@@ -489,7 +489,7 @@
 "group_menu_delete" = "Delete Chat";
 "group_menu_exit" = "Exit Group";
 "group_menu_participants" = "Participants";
-"group_title_members" = "%@ Participants";
+"group_title_members" = "%d Participants";
 
 "code_recognition_fail_title" = "Unrecognized codes";
 "code_recognition_fail_summary" = "This codes doesn't match any Mixin groups or users.";
@@ -516,7 +516,7 @@
 "wallet_deposit_btc" = "This address only supports BTC. ";
 "wallet_deposit_trx" = "This address supports all TRC 10 and TRC 20 tokens, such as TRX, BTT, USDT-TRON, etc.";
 "wallet_deposit_other" = "This address only support %@.";
-"wallet_deposit_confirmations" = "Deposit will arrive after at least %@ block confirmations.";
+"wallet_deposit_confirmations" = "Deposit will arrive after at least %d block confirmations.";
 "wallet_no_transaction" = "No transaction";
 "wallet_address" = "Address";
 "wallet_address_destination" = "Address";
@@ -560,9 +560,9 @@
 "wallet_enable_biometric_pay_prompt" = "Once enabled, %@ can be used to make quick transfers";
 "wallet_biometric_pay_prompt" = "Authorize payment via %@";
 "wallet_disable_biometric_pay" = "Disable %@ Pay?";
-"wallet_pin_pay_interval_minutes" = "%@ Minutes";
+"wallet_pin_pay_interval_minutes" = "%d Minutes";
 "wallet_pin_pay_interval_hour" = "1 Hour";
-"wallet_pin_pay_interval_hours" = "%@ Hours";
+"wallet_pin_pay_interval_hours" = "%d Hours";
 "wallet_pin_pay_interval" = "Pay with PIN interval";
 "wallet_pin_pay_interval_confirm" = "Confirm PIN to protect your settings security.";
 "wallet_pin_pay_interval_tips" = "For the security of your assets, you need to verify your PIN for the specified interval.";
@@ -818,7 +818,7 @@
 "setting_no_authorizations" = "NO AUTHORIZATIONS";
 "setting_revoke_confirmation" = "Revoke access %@?";
 "setting_storage_usage" = "Storage Usage";
-"setting_storage_usage_clear" = "Clear %@ messages (%@)?";
+"setting_storage_usage_clear" = "Clear %d messages (%@)?";
 "setting_header_message_source" = "WHO CAN SEND ME MESSAGES";
 "setting_header_conversation_source" = "WHO CAN ADD ME TO GROUP CHATS";
 "setting_header_search_source" = "Who can find me by my number";

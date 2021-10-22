@@ -146,7 +146,7 @@ class PayWindow: BottomSheetView {
             switch pinAction! {
             case let .transfer(_, user, _):
                 multisigView.isHidden = true
-                nameLabel.text = Localized.PAY_TRANSFER_TITLE(fullname: user.fullName)
+                nameLabel.text = R.string.localizable.pay_transfer_title(user.fullName)
                 mixinIDLabel.text = user.isCreatedByMessenger ? user.identityNumber : user.userId
                 mixinIDLabel.textColor = .accessoryText
                 pinView.isHidden = false
@@ -437,7 +437,7 @@ class PayWindow: BottomSheetView {
             return
         }
 
-        let prompt = Localized.WALLET_BIOMETRIC_PAY_PROMPT(biometricType: biometryType.localizedName)
+        let prompt = R.string.localizable.wallet_biometric_pay_prompt(biometryType.localizedName)
         biometricAuthQueue.async { [weak self] in
             DispatchQueue.main.sync {
                 ScreenLockManager.shared.hasOtherBiometricAuthInProgress = true

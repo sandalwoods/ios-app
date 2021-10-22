@@ -20,10 +20,10 @@ enum Scope: String {
         }
         var result = [(scope: Scope, name: String, desc: String)]()
         var scopes = [Scope.PROFILE.rawValue]
-        result.append((.PROFILE, Localized.AUTH_PERMISSION_PROFILE, Localized.AUTH_PROFILE_DESCRIPTION(fullName: account.full_name, phone: account.identity_number)))
+        result.append((.PROFILE, R.string.localizable.auth_permission_profile(), R.string.localizable.auth_profile_description(account.full_name, account.identity_number)))
 
         if authInfo.scopes.contains(Scope.PHONE.rawValue) {
-            result.append((.PHONE, Localized.AUTH_PERMISSION_PHONE, account.phone))
+            result.append((.PHONE, R.string.localizable.auth_permission_phone(), account.phone))
             scopes.append(Scope.PHONE.rawValue)
         }
         if authInfo.scopes.contains(Scope.MESSAGES_REPRESENT.rawValue) {
@@ -31,11 +31,11 @@ enum Scope: String {
             scopes.append(Scope.MESSAGES_REPRESENT.rawValue)
         }
         if authInfo.scopes.contains(Scope.CONTACTS_READ.rawValue) {
-            result.append((.CONTACTS_READ, Localized.AUTH_PERMISSION_CONTACTS_READ, Localized.AUTH_PERMISSION_CONTACTS_READ_DESCRIPTION))
+            result.append((.CONTACTS_READ, R.string.localizable.auth_permission_contacts_read(), R.string.localizable.auth_permission_contacts_read_description()))
             scopes.append(Scope.CONTACTS_READ.rawValue)
         }
         if authInfo.scopes.contains(Scope.ASSETS.rawValue) {
-            result.append((.ASSETS, Localized.AUTH_PERMISSION_ASSETS, getAssetsBalanceText()))
+            result.append((.ASSETS, R.string.localizable.auth_permission_assets(), getAssetsBalanceText()))
             scopes.append(Scope.ASSETS.rawValue)
         }
         if authInfo.scopes.contains(Scope.SNAPSHOTS_READ.rawValue) {
@@ -43,11 +43,11 @@ enum Scope: String {
             scopes.append(Scope.SNAPSHOTS_READ.rawValue)
         }
         if authInfo.scopes.contains(Scope.APPS_READ.rawValue) {
-            result.append((.APPS_READ, Localized.AUTH_PERMISSION_APPS_READ, Localized.AUTH_PERMISSION_APPS_READ_DESCRIPTION))
+            result.append((.APPS_READ, R.string.localizable.auth_permission_apps_read(), R.string.localizable.auth_permission_apps_read_description()))
             scopes.append(Scope.APPS_READ.rawValue)
         }
         if authInfo.scopes.contains(Scope.APPS_WRITE.rawValue) {
-            result.append((.APPS_WRITE, Localized.AUTH_PERMISSION_APPS_WRITE, Localized.AUTH_PERMISSION_APPS_WRITE_DESCRIPTION))
+            result.append((.APPS_WRITE, R.string.localizable.auth_permission_apps_write(), R.string.localizable.auth_permission_apps_write_description()))
             scopes.append(Scope.APPS_WRITE.rawValue)
         }
         if authInfo.scopes.contains(Scope.CIRCLES_READ.rawValue) {
@@ -75,7 +75,7 @@ enum Scope: String {
             result += ", \(assets[1].localizedBalance) \(assets[1].symbol)"
         }
         if assets.count > 2 {
-            result += Localized.AUTH_ASSETS_MORE
+            result += R.string.localizable.auth_assets_more()
         }
         return result
     }

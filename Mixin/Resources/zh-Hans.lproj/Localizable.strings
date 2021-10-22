@@ -65,7 +65,7 @@
 "title_help" = "帮助";
 
 "connection_hint_connecting" = "正在连接";
-"connection_hint_progress" = "正在同步 %@%%";
+"connection_hint_progress" = "正在同步 %d%%";
 
 "date_format_day" = "ahh:mm";
 "date_format_month" = "MM 月 d 日 E";
@@ -457,7 +457,7 @@
 "group_navigation_title_announcement" = "群组公告";
 "group_cell_title_photo" = "群组头像";
 "group_cell_title_name" = "群组名称";
-"group_section_title_members" = "群组成员";
+"group_section_title_members" = "%@群组成员";
 "group_button_title_create" = "创建";
 "group_button_title_share_link" = "分享链接";
 "group_button_title_copy_link" = "复制链接";
@@ -489,7 +489,7 @@
 "group_menu_delete" = "删除聊天";
 "group_menu_exit" = "退出群组";
 "group_menu_participants" = "群组成员";
-"group_title_members" = "%@ 位群组成员";
+"group_title_members" = "%d 位群组成员";
 
 "code_recognition_fail_title" = "未识别的链接";
 "code_recognition_fail_summary" = "没有找到这个链接相关的群组或人";
@@ -517,7 +517,7 @@
 "wallet_deposit_btc" = "该充值地址仅支持 BTC。 ";
 "wallet_deposit_trx" = "该充值地址支持所有符合 TRC-10 和 TRC-20 协议的币，例如 TRX、BTT、USDT-TRON 等。 ";
 "wallet_deposit_other" = "该充值地址仅支持 %@。";
-"wallet_deposit_confirmations" = "充值到账至少需要 %@ 个区块确认。";
+"wallet_deposit_confirmations" = "充值到账至少需要 %d 个区块确认。";
 "wallet_no_transaction" = "暂无转账记录";
 "wallet_address" = "地址";
 "wallet_address_destination" = "地址";
@@ -561,9 +561,9 @@
 "wallet_enable_biometric_pay_prompt" = "开启后，转账时可验证%@快速完成付款";
 "wallet_biometric_pay_prompt" = "通过%@验证支付";
 "wallet_disable_biometric_pay" = "确定暂停使用%@支付？";
-"wallet_pin_pay_interval_minutes" = "%@ 分钟";
+"wallet_pin_pay_interval_minutes" = "%d 分钟";
 "wallet_pin_pay_interval_hour" = "1 小时";
-"wallet_pin_pay_interval_hours" = "%@ 小时";
+"wallet_pin_pay_interval_hours" = "%d 小时";
 "wallet_pin_pay_interval" = "密码使用间隔";
 "wallet_pin_pay_interval_confirm" = "确认钱包密码保护设置安全";
 "wallet_pin_pay_interval_tips" = "为了你的资产安全，距离上次输入密码的时间超过以上指定时间时，再次转账时仍然需要密码";
@@ -819,7 +819,7 @@
 "setting_no_authorizations" = "没有授权";
 "setting_revoke_confirmation" = "取消 %@ 授权？";
 "setting_storage_usage" = "存储空间";
-"setting_storage_usage_clear" = "清除 %@ 个消息（%@）吗？";
+"setting_storage_usage_clear" = "清除 %d 个消息（%@）吗？";
 "setting_header_message_source" = "谁可以给我发消息";
 "setting_header_conversation_source" = "谁可以加我入群";
 "setting_header_search_source" = "谁可以通过手机号找到我";

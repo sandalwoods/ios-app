@@ -7,17 +7,17 @@ class CallMessageViewModel: IconPrefixedTextMessageViewModel {
         let isRemote = message.userId != myUserId
         switch message.category {
         case MessageCategory.WEBRTC_AUDIO_CANCEL.rawValue:
-            return isRemote ? Localized.CHAT_MESSAGE_CALL_REMOTE_CANCELLED : Localized.CHAT_MESSAGE_CALL_CANCELLED
+            return isRemote ? R.string.localizable.chat_message_call_remote_cancelled() : R.string.localizable.chat_message_call_cancelled()
         case MessageCategory.WEBRTC_AUDIO_DECLINE.rawValue:
-            return isRemote ? Localized.CHAT_MESSAGE_CALL_DECLINED : Localized.CHAT_MESSAGE_CALL_REMOTE_DECLINED
+            return isRemote ? R.string.localizable.chat_message_call_declined() : R.string.localizable.chat_message_call_remote_declined()
         case MessageCategory.WEBRTC_AUDIO_BUSY.rawValue:
-            return isRemote ? Localized.CHAT_MESSAGE_CALL_BUSY : Localized.CHAT_MESSAGE_CALL_REMOTE_BUSY
+            return isRemote ? R.string.localizable.chat_message_call_busy() : R.string.localizable.chat_message_call_remote_busy()
         case MessageCategory.WEBRTC_AUDIO_FAILED.rawValue:
-            return Localized.CHAT_MESSAGE_CALL_FAILED
+            return R.string.localizable.chat_message_call_failed()
         case MessageCategory.WEBRTC_AUDIO_END.rawValue:
             let mediaDuration = Double(message.mediaDuration ?? 0) / millisecondsPerSecond
             let duration = CallDurationFormatter.string(from: mediaDuration) ?? "0"
-            return Localized.CHAT_MESSAGE_CALL_DURATION(duration: duration)
+            return R.string.localizable.chat_message_call_duration(duration)
         default:
             return ""
         }

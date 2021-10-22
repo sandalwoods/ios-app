@@ -23,7 +23,7 @@ final class ViewEmergencyContactViewController: UIViewController {
                                  userId: user.userId,
                                  name: user.fullName ?? "")
         nameLabel.text = user.fullName
-        idLabel.text = Localized.PROFILE_MIXIN_ID(id: user.identityNumber)
+        idLabel.text = R.string.localizable.profile_mixin_id(user.identityNumber)
         updateDescription()
     }
     

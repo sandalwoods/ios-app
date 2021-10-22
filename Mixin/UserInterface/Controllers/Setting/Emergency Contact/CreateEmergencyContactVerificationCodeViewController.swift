@@ -32,7 +32,7 @@ class CreateEmergencyContactVerificationCodeViewController: VerificationCodeView
         helpButtonBottomConstraint.isActive = true
         
         resendButton.isHidden = true
-        titleLabel.text = Localized.NAVIGATION_TITLE_ENTER_EMERGENCY_CONTACT_VERIFICATION_CODE(id: identityNumber)
+        titleLabel.text = R.string.localizable.navigation_title_enter_emergency_contact_verification_code(identityNumber)
     }
 
      @objc func helpAction() {

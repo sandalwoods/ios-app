@@ -70,7 +70,7 @@ extension SettingsViewController: UITableViewDelegate {
                 vc = NotificationAndConfirmationSettingsViewController.instance()
             case 2:
                 if FileManager.default.ubiquityIdentityToken == nil {
-                    alert(Localized.SETTING_BACKUP_DISABLE_TIPS)
+                    alert(R.string.localizable.setting_backup_disable_tips())
                     return
                 } else {
                     vc = BackupViewController.instance()

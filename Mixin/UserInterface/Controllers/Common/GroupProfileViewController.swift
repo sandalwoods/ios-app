@@ -72,10 +72,10 @@ final class GroupProfileViewController: ProfileViewController {
                 ConversationDAO.shared.updateConversationMuteUntil(conversationId: conversationId, muteUntil: response.muteUntil)
                 let toastMessage: String
                 if interval == MuteInterval.none {
-                    toastMessage = Localized.PROFILE_TOAST_UNMUTED
+                    toastMessage = R.string.localizable.profile_toast_unmuted()
                 } else {
                     let dateRepresentation = DateFormatter.dateSimple.string(from: response.muteUntil.toUTCDate())
-                    toastMessage = Localized.PROFILE_TOAST_MUTED(muteUntil: dateRepresentation)
+                    toastMessage = R.string.localizable.profile_toast_muted(dateRepresentation)
                 }
                 hud.set(style: .notification, text: toastMessage)
             case let .failure(error):
@@ -150,7 +150,7 @@ extension GroupProfileViewController {
     
     @objc func editGroupName() {
         let conversation = self.conversation
-        presentEditNameController(title: Localized.CONTACT_TITLE_CHANGE_NAME, text: conversation.name, placeholder: Localized.PLACEHOLDER_NEW_NAME) { [weak self] (name) in
+        presentEditNameController(title: R.string.localizable.contact_title_change_name(), text: conversation.name, placeholder: R.string.localizable.placeholder_new_name()) { [weak self] (name) in
             NotificationCenter.default.post(onMainThread: MixinServices.conversationDidChangeNotification, object: ConversationChange(conversationId: conversation.conversationId, action: .startedUpdateConversation))
             let hud = Hud()
             hud.show(style: .busy, text: "", on: AppDelegate.current.mainWindow)
@@ -159,7 +159,7 @@ extension GroupProfileViewController {
                 case .success:
                     self?.conversation.name = name
                     self?.titleLabel.text = name
-                    hud.set(style: .notification, text: Localized.TOAST_CHANGED)
+                    hud.set(style: .notification, text: R.string.localizable.toast_changed())
                 case let .failure(error):
                     hud.set(style: .error, text: error.localizedDescription)
                 }
@@ -171,7 +171,7 @@ extension GroupProfileViewController {
     @objc func exitGroupAction() {
         let conversationId = conversation.conversationId
         let alert = UIAlertController(title: R.string.localizable.profile_exit_group_hint(conversation.name), message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.localizable.group_menu_exit(), style: .destructive, handler: { (_) in
             let hud = Hud()
             hud.show(style: .busy, text: "", on: AppDelegate.current.mainWindow)
@@ -206,7 +206,7 @@ extension GroupProfileViewController {
     @objc func deleteChatAction() {
         let conversationId = conversation.conversationId
         let alert = UIAlertController(title: R.string.localizable.profile_delete_group_chat_hint(conversation.name), message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.localizable.group_menu_delete(), style: .destructive, handler: { [weak self](_) in
             let hud = Hud()
             hud.show(style: .busy, text: "", on: AppDelegate.current.mainWindow)
@@ -339,7 +339,7 @@ extension GroupProfileViewController {
     
     private func updateSubtitle() {
         if let count = participantsCount {
-            subtitleLabel.text = Localized.GROUP_TITLE_MEMBERS(count: "\(count)")
+            subtitleLabel.text = R.string.localizable.group_title_members(count)
         } else {
             subtitleLabel.text = nil
         }

@@ -44,7 +44,7 @@ class DesktopViewController: SettingsTableViewController {
         } else {
             if let lastLoginDate = AppGroupUserDefaults.Account.lastDesktopLoginDate {
                 let time = formattedString(from: lastLoginDate)
-                loginSection.footer = Localized.SETTING_DESKTOP_LAST_ACTIVE(time: time)
+                loginSection.footer = R.string.localizable.setting_desktop_last_active(time)
             } else {
                 loginSection.footer = nil
             }

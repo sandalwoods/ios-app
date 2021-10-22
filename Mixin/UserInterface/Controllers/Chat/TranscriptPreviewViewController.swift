@@ -159,7 +159,7 @@ extension TranscriptPreviewViewController {
             case let .success(sticker):
                 DispatchQueue.global().async {
                     StickerDAO.shared.insertOrUpdateFavoriteSticker(sticker: sticker)
-                    showAutoHiddenHud(style: .notification, text: Localized.TOAST_ADDED)
+                    showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_added())
                 }
             case let .failure(error):
                 showAutoHiddenHud(style: .error, text: error.localizedDescription)

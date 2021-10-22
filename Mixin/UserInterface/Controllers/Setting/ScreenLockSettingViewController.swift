@@ -13,7 +13,7 @@ final class ScreenLockSettingViewController: SettingsTableViewController {
                                                       accessory: .switch(isOn: AppGroupUserDefaults.User.lockScreenWithBiometricAuthentication))
     
     private lazy var timeoutIntervalRow = SettingsRow(title: R.string.localizable.setting_screen_lock_enable_biometric_timeout(),
-                                                      subtitle: Localized.SCREEN_LOCK_TIMEOUT_INTERVAL(AppGroupUserDefaults.User.lockScreenTimeoutInterval),
+                                                      subtitle: screenLockTimeoutInterval(AppGroupUserDefaults.User.lockScreenTimeoutInterval),
                                                       accessory: .disclosure)
     
     class func instance() -> UIViewController {
@@ -48,7 +48,7 @@ extension ScreenLockSettingViewController: UITableViewDelegate {
         if indexPath.section == 0 && indexPath.row == 1 {
             let alert = UIAlertController(title: nil, message: R.string.localizable.setting_screen_lock_enable_biometric_timeout(), preferredStyle: .actionSheet)
             for interval in timeoutIntervals {
-                alert.addAction(UIAlertAction(title: Localized.SCREEN_LOCK_TIMEOUT_INTERVAL(interval), style: .default, handler: { (_) in
+                alert.addAction(UIAlertAction(title: screenLockTimeoutInterval(interval), style: .default, handler: { (_) in
                     self.setNewTimeoutInterval(interval)
                 }))
             }
@@ -80,8 +80,20 @@ extension ScreenLockSettingViewController {
     private func setNewTimeoutInterval(_ interval: Double) {
         AppGroupUserDefaults.User.lastLockScreenBiometricVerifiedDate = Date()
         AppGroupUserDefaults.User.lockScreenTimeoutInterval = interval
-        timeoutIntervalRow.subtitle = Localized.SCREEN_LOCK_TIMEOUT_INTERVAL(AppGroupUserDefaults.User.lockScreenTimeoutInterval)
+        timeoutIntervalRow.subtitle = screenLockTimeoutInterval(AppGroupUserDefaults.User.lockScreenTimeoutInterval)
         NotificationCenter.default.post(name: Self.screenLockTimeoutDidUpdateNotification, object: nil)
+    }
+    
+    private func screenLockTimeoutInterval(_ seconds: Double) -> String {
+        if seconds == 0 {
+            return R.string.localizable.setting_screen_lock_timeout_immediately()
+        } else if seconds == 60 * 60 {
+            return R.string.localizable.setting_screen_lock_timeout_hour()
+        } else if seconds == 60 {
+            return R.string.localizable.setting_screen_lock_timeout_one_minute()
+        } else {
+            return R.string.localizable.setting_screen_lock_timeout_minutes("\(Int(seconds / 60))")
+        }
     }
     
 }

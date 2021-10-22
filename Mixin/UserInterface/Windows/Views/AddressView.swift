@@ -54,11 +54,11 @@ class AddressView: UIStackView {
 
         switch addressAction {
         case .add:
-            titleLabel.text = Localized.ADDRESS_NEW_TITLE(symbol: asset.symbol)
+            titleLabel.text = R.string.localizable.address_new_title(asset.symbol)
         case .update:
-            titleLabel.text = Localized.ADDRESS_EDIT_TITLE(symbol: asset.symbol)
+            titleLabel.text = R.string.localizable.address_edit_title(asset.symbol)
         case .delete:
-            titleLabel.text = Localized.ADDRESS_DELETE_TITLE(symbol: asset.symbol)
+            titleLabel.text = R.string.localizable.address_delete_title(asset.symbol)
         }
         if let address = addressRequest {
             nameLabel.text = address.label
@@ -125,7 +125,7 @@ extension AddressView: PinFieldDelegate {
                     self?.pinField.resignFirstResponder()
                     AddressDAO.shared.insertOrUpdateAddress(addresses: [address])
                     AppGroupUserDefaults.Wallet.lastPinVerifiedDate = Date()
-                    showAutoHiddenHud(style: .notification, text: Localized.TOAST_SAVED)
+                    showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_saved())
                 case .failure(.malformedAddress):
                     guard let self = self else {
                         return

@@ -256,7 +256,7 @@ final class GalleryVideoItemViewController: GalleryItemViewController, GalleryAn
     
     override func saveToLibrary() {
         guard let url = item?.url else {
-            showAutoHiddenHud(style: .error, text: Localized.CAMERA_SAVE_VIDEO_FAILED)
+            showAutoHiddenHud(style: .error, text: R.string.localizable.camera_save_video_failed())
             return
         }
         PHPhotoLibrary.shared().performChanges({
@@ -264,9 +264,9 @@ final class GalleryVideoItemViewController: GalleryItemViewController, GalleryAn
         }, completionHandler: { (success, error) in
             DispatchQueue.main.async {
                 if success {
-                    showAutoHiddenHud(style: .notification, text: Localized.CAMERA_SAVE_VIDEO_SUCCESS)
+                    showAutoHiddenHud(style: .notification, text: R.string.localizable.camera_save_video_success())
                 } else {
-                    showAutoHiddenHud(style: .error, text: Localized.CAMERA_SAVE_VIDEO_FAILED)
+                    showAutoHiddenHud(style: .error, text: R.string.localizable.camera_save_video_failed())
                 }
             }
         })

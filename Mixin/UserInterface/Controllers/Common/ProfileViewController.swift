@@ -121,8 +121,8 @@ class ProfileViewController: ResizablePopupViewController {
             textField.addTarget(self, action: #selector(self.updateEditNameController(_:)), for: .editingChanged)
             nameTextField = textField
         }
-        controller.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
-        controller.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CHANGE, style: .default, handler: { _ in
+        controller.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
+        controller.addAction(UIAlertAction(title: R.string.localizable.dialog_button_change(), style: .default, handler: { _ in
             guard let text = nameTextField.text else {
                 return
             }
@@ -196,14 +196,14 @@ extension ProfileViewController: CoreTextLabelDelegate {
     
     func coreTextLabel(_ label: CoreTextLabel, didLongPressOnURL url: URL) {
         let alert = UIAlertController(title: url.absoluteString, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.CHAT_MESSAGE_OPEN_URL, style: .default, handler: { [weak self] (_) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.chat_message_open_url(), style: .default, handler: { [weak self] (_) in
             self?.coreTextLabel(label, didSelectURL: url)
         }))
-        alert.addAction(UIAlertAction(title: Localized.CHAT_MESSAGE_MENU_COPY, style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.chat_message_menu_copy(), style: .default, handler: { (_) in
             UIPasteboard.general.string = url.absoluteString
-            showAutoHiddenHud(style: .notification, text: Localized.TOAST_COPIED)
+            showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_copied())
         }))
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -220,13 +220,13 @@ extension ProfileViewController {
     
     @objc func mute() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.PROFILE_MUTE_DURATION_8H, style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.profile_mute_duration_8h(), style: .default, handler: { (_) in
             self.updateMuteInterval(inSeconds: MuteInterval.eightHours)
         }))
-        alert.addAction(UIAlertAction(title: Localized.PROFILE_MUTE_DURATION_1WEEK, style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.profile_mute_duration_1week(), style: .default, handler: { (_) in
             self.updateMuteInterval(inSeconds: MuteInterval.oneWeek)
         }))
-        alert.addAction(UIAlertAction(title: Localized.PROFILE_MUTE_DURATION_1YEAR, style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.profile_mute_duration_1year(), style: .default, handler: { (_) in
             self.updateMuteInterval(inSeconds: MuteInterval.oneYear)
         }))
         if isMuted {
@@ -234,7 +234,7 @@ extension ProfileViewController {
                 self.updateMuteInterval(inSeconds: MuteInterval.none)
             }))
         }
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -247,13 +247,13 @@ extension ProfileViewController {
             title = R.string.localizable.profile_clear_contact_chat_hint(conversationName)
         }
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.localizable.group_menu_clear(), style: .destructive, handler: { (_) in
             self.dismiss(animated: true, completion: nil)
             DispatchQueue.global().async {
                 ConversationDAO.shared.clearChat(conversationId: conversationId)
                 DispatchQueue.main.async {
-                    showAutoHiddenHud(style: .notification, text: Localized.GROUP_CLEAR_SUCCESS)
+                    showAutoHiddenHud(style: .notification, text: R.string.localizable.group_clear_success())
                 }
             }
         }))

@@ -152,9 +152,9 @@ class CameraViewController: UIViewController, MixinNavigationAnimating {
                     return
                 }
                 if success {
-                    showAutoHiddenHud(style: .notification, text: Localized.CAMERA_SAVE_PHOTO_SUCCESS)
+                    showAutoHiddenHud(style: .notification, text: R.string.localizable.camera_save_photo_success())
                 } else {
-                    showAutoHiddenHud(style: .error, text: Localized.CAMERA_SAVE_PHOTO_FAILED)
+                    showAutoHiddenHud(style: .error, text: R.string.localizable.camera_save_photo_failed())
                 }
                 weakSelf.saveButton.isEnabled = true
                 weakSelf.sendButton.isEnabled = true
@@ -415,7 +415,7 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
     private func askForAudioRecordPermission() {
         switch AVAudioSession.sharedInstance().recordPermission {
         case .denied:
-            alertSettings(Localized.PERMISSION_DENIED_MICROPHONE)
+            alertSettings(R.string.localizable.permission_denied_microphone())
         case .undetermined:
             AVAudioSession.sharedInstance().requestRecordPermission({ (granted) in
                 if granted {

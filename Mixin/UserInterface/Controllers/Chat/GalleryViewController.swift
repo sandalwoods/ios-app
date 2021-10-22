@@ -352,7 +352,7 @@ final class GalleryViewController: UIViewController, GalleryAnimatable {
             }))
         }
         if itemViewController.supportedActions.contains(.saveToLibrary) {
-            alert.addAction(UIAlertAction(title: Localized.CHAT_PHOTO_SAVE, style: .default, handler: { (_) in
+            alert.addAction(UIAlertAction(title: R.string.localizable.chat_photo_save(), style: .default, handler: { (_) in
                 PHPhotoLibrary.checkAuthorization { (authorized) in
                     if authorized {
                         itemViewController.saveToLibrary()
@@ -361,13 +361,13 @@ final class GalleryViewController: UIViewController, GalleryAnimatable {
             }))
         }
         if let url = (itemViewController as? GalleryImageItemViewController)?.detectedUrl {
-            alert.addAction(UIAlertAction(title: Localized.SCAN_QR_CODE, style: .default, handler: { (_) in
+            alert.addAction(UIAlertAction(title: R.string.localizable.scan_qr_code(), style: .default, handler: { (_) in
                 if !UrlWindow.checkUrl(url: url, clearNavigationStack: false) {
                     RecognizeWindow.instance().presentWindow(text: url.absoluteString)
                 }
             }))
         }
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     

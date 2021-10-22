@@ -211,7 +211,7 @@ class NewAddressViewController: KeyboardBasedLayoutViewController {
         vc.asset = asset
         vc.successCallback = successCallback
         vc.address = address
-        return ContainerViewController.instance(viewController: vc, title: address == nil ? Localized.ADDRESS_NEW_TITLE(symbol: asset.symbol) : Localized.ADDRESS_EDIT_TITLE(symbol: asset.symbol))
+        return ContainerViewController.instance(viewController: vc, title: address == nil ? R.string.localizable.address_new_title(asset.symbol) : R.string.localizable.address_edit_title(asset.symbol))
     }
 
 }

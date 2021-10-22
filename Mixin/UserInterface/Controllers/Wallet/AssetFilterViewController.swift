@@ -36,21 +36,21 @@ class AssetFilterViewController: UIViewController {
     private let headerReuseId = "header"
     private var headers: [String] {
         if showFilters {
-            return [Localized.TRANSACTIONS_FILTER_SORT_BY,
-                    Localized.TRANSACTIONS_FILTER_FILTER_BY]
+            return [R.string.localizable.transactions_filter_sort_by(),
+                    R.string.localizable.transactions_filter_filter_by()]
         } else {
-            return [Localized.TRANSACTIONS_FILTER_SORT_BY]
+            return [R.string.localizable.transactions_filter_sort_by()]
         }
     }
     private var titles: [[String]] {
-        let sortTitles = [Localized.TRANSACTIONS_FILTER_SORT_BY_TIME,
-                          Localized.TRANSACTIONS_FILTER_SORT_BY_AMOUNT]
-        let filterTitles = [Localized.TRANSACTIONS_FILTER_FILTER_BY_ALL,
-                            Localized.TRANSACTION_TYPE_TRANSFER,
-                            Localized.TRANSACTION_TYPE_DEPOSIT,
-                            Localized.TRANSACTION_TYPE_WITHDRAWAL,
-                            Localized.TRANSACTION_TYPE_FEE,
-                            Localized.TRANSACTION_TYPE_REBATE,
+        let sortTitles = [R.string.localizable.transactions_filter_sort_by_time(),
+                          R.string.localizable.transactions_filter_sort_by_amount()]
+        let filterTitles = [R.string.localizable.transactions_filter_filter_by_all(),
+                            R.string.localizable.transaction_type_transfer(),
+                            R.string.localizable.transaction_type_deposit(),
+                            R.string.localizable.transaction_type_withdrawal(),
+                            R.string.localizable.transaction_type_fee(),
+                            R.string.localizable.transaction_type_rebate(),
                             R.string.localizable.transaction_type_raw()]
         if showFilters {
             return [sortTitles, filterTitles]

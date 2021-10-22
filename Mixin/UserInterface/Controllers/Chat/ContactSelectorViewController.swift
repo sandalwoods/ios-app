@@ -10,7 +10,7 @@ class ContactSelectorViewController: UserItemPeerViewController<CheckmarkPeerCel
     class func instance(conversationInputViewController: ConversationInputViewController) -> UIViewController {
         let vc = ContactSelectorViewController()
         vc.conversationInputViewController = conversationInputViewController
-        return ContainerViewController.instance(viewController: vc, title: Localized.PROFILE_SHARE_CARD)
+        return ContainerViewController.instance(viewController: vc, title: R.string.localizable.profile_share_card())
     }
     
     override func viewDidLoad() {

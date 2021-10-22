@@ -73,14 +73,14 @@ class HomeViewController: UIViewController {
         bulletinContentViewIfLoaded = view
         return view
     }()
-    private lazy var deleteAction = UITableViewRowAction(style: .destructive, title: Localized.MENU_DELETE, handler: tableViewCommitDeleteAction)
+    private lazy var deleteAction = UITableViewRowAction(style: .destructive, title: R.string.localizable.menu_delete(), handler: tableViewCommitDeleteAction)
     private lazy var pinAction: UITableViewRowAction = {
-        let action = UITableViewRowAction(style: .normal, title: Localized.HOME_CELL_ACTION_PIN, handler: tableViewCommitPinAction)
+        let action = UITableViewRowAction(style: .normal, title: R.string.localizable.home_cell_action_pin(), handler: tableViewCommitPinAction)
         action.backgroundColor = .theme
         return action
     }()
     private lazy var unpinAction: UITableViewRowAction = {
-        let action = UITableViewRowAction(style: .normal, title: Localized.HOME_CELL_ACTION_UNPIN, handler: tableViewCommitPinAction)
+        let action = UITableViewRowAction(style: .normal, title: R.string.localizable.home_cell_action_unpin(), handler: tableViewCommitPinAction)
         action.backgroundColor = .theme
         return action
     }()
@@ -349,7 +349,7 @@ class HomeViewController: UIViewController {
                 WebSocketService.shared.connectIfNeeded()
             }
         } else if WebSocketService.shared.isRealConnected {
-            let title = Localized.CONNECTION_HINT_PROGRESS(progress)
+            let title = R.string.localizable.connection_hint_progress(progress)
             titleButton.setTitle(title, for: .normal)
             connectingView.startAnimating()
         }
@@ -457,9 +457,9 @@ class HomeViewController: UIViewController {
                 }
             })
         case .denied, .restricted:
-            alertSettings(Localized.PERMISSION_DENIED_CAMERA)
+            alertSettings(R.string.localizable.permission_denied_camera())
         @unknown default:
-            alertSettings(Localized.PERMISSION_DENIED_CAMERA)
+            alertSettings(R.string.localizable.permission_denied_camera())
         }
     }
     
@@ -697,7 +697,7 @@ extension HomeViewController {
             }))
         }
 
-        alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         self.present(alc, animated: true, completion: nil)
         tableView.setEditing(false, animated: true)
     }
@@ -711,7 +711,7 @@ extension HomeViewController {
         } else {
             alert = UIAlertController(title: R.string.localizable.profile_delete_contact_chat_hint(conversation.ownerFullName), message: nil, preferredStyle: .actionSheet)
         }
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.localizable.group_menu_delete(), style: .destructive, handler: { (_) in
             self.tableView.beginUpdates()
             self.conversations.remove(at: indexPath.row)
@@ -733,7 +733,7 @@ extension HomeViewController {
         } else {
             alert = UIAlertController(title: R.string.localizable.profile_clear_contact_chat_hint(conversation.ownerFullName), message: nil, preferredStyle: .actionSheet)
         }
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.localizable.group_menu_clear(), style: .destructive, handler: { (_) in
             self.tableView.beginUpdates()
             self.conversations[indexPath.row].contentType = MessageCategory.UNKNOWN.rawValue
@@ -752,7 +752,7 @@ extension HomeViewController {
         let conversation = conversations[indexPath.row]
         let conversationId = conversation.conversationId
         let alert = UIAlertController(title: R.string.localizable.profile_exit_group_hint(conversation.name), message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.localizable.group_menu_exit(), style: .destructive, handler: { (_) in
             let hud = Hud()
             hud.show(style: .busy, text: "", on: AppDelegate.current.mainWindow)

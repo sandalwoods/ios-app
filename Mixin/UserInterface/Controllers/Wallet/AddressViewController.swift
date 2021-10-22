@@ -9,7 +9,7 @@ class AddressViewController: UIViewController {
     
     private let cellReuseId = "address"
     
-    private lazy var deleteAction = UITableViewRowAction(style: .destructive, title: Localized.MENU_DELETE, handler: tableViewCommitDeleteAction)
+    private lazy var deleteAction = UITableViewRowAction(style: .destructive, title: R.string.localizable.menu_delete(), handler: tableViewCommitDeleteAction)
     
     private var asset: AssetItem!
     private var addresses = [Address]()
@@ -61,7 +61,7 @@ class AddressViewController: UIViewController {
     class func instance(asset: AssetItem) -> UIViewController {
         let vc = R.storyboard.wallet.address_list()!
         vc.asset = asset
-        let container = ContainerViewController.instance(viewController: vc, title: Localized.ADDRESS_LIST_TITLE)
+        let container = ContainerViewController.instance(viewController: vc, title: R.string.localizable.address_list_title())
         return container
     }
     

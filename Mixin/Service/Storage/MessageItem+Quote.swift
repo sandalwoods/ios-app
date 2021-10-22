@@ -7,11 +7,11 @@ extension MessageItem {
         if category.hasSuffix("_TEXT") {
             return mentionedFullnameReplacedContent
         } else if category.hasSuffix("_STICKER") {
-            return Localized.CHAT_QUOTE_TYPE_STICKER
+            return R.string.localizable.chat_quote_type_sticker()
         } else if category.hasSuffix("_IMAGE") {
-            return Localized.CHAT_QUOTE_TYPE_PHOTO
+            return R.string.localizable.chat_quote_type_photo()
         } else if category.hasSuffix("_VIDEO") {
-            return Localized.CHAT_QUOTE_TYPE_VIDEO
+            return R.string.localizable.chat_quote_type_video()
         } else if category.hasSuffix("_LIVE") {
             return R.string.localizable.chat_quote_type_live()
         } else if category.hasSuffix("_POST") {

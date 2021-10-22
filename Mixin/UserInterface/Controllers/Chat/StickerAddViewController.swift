@@ -18,7 +18,7 @@ class StickerAddViewController: UIViewController {
     class func instance(source: Source) -> UIViewController {
         let vc = R.storyboard.chat.sticker_add()!
         vc.source = source
-        return ContainerViewController.instance(viewController: vc, title: Localized.STICKER_ADD_TITLE)
+        return ContainerViewController.instance(viewController: vc, title: R.string.localizable.sticker_add_title())
     }
     
     override func viewDidLoad() {
@@ -99,7 +99,7 @@ extension StickerAddViewController: ContainerViewControllerDelegate {
     }
     
     func textBarRightButton() -> String? {
-        return Localized.ACTION_SAVE
+        return R.string.localizable.action_save()
     }
     
 }
@@ -108,7 +108,7 @@ extension StickerAddViewController {
     
     private func showMalformedAlert() {
         container?.rightButton.isBusy = false
-        alert(Localized.STICKER_ADD_REQUIRED)
+        alert(R.string.localizable.sticker_add_required())
     }
     
     private func showFailureAlert() {
@@ -174,7 +174,7 @@ extension StickerAddViewController {
                 DispatchQueue.global().async { [weak self] in
                     StickerDAO.shared.insertOrUpdateFavoriteSticker(sticker: sticker)
                     DispatchQueue.main.async {
-                        showAutoHiddenHud(style: .notification, text: Localized.TOAST_ADDED)
+                        showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_added())
                         self?.navigationController?.popViewController(animated: true)
                     }
                 }

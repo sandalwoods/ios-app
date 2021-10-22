@@ -55,7 +55,7 @@ class DepositViewController: UIViewController {
     class func instance(asset: AssetItem) -> UIViewController {
         let vc = R.storyboard.wallet.deposit()!
         vc.asset = asset
-        return ContainerViewController.instance(viewController: vc, title: Localized.WALLET_DEPOSIT)
+        return ContainerViewController.instance(viewController: vc, title: R.string.localizable.wallet_deposit())
     }
     
 }
@@ -79,7 +79,7 @@ extension DepositViewController: ContainerViewControllerDelegate {
 extension DepositViewController: DepositFieldViewDelegate {
     
     func depositFieldViewDidCopyContent(_ view: DepositFieldView) {
-        showAutoHiddenHud(style: .notification, text: Localized.TOAST_COPIED)
+        showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_copied())
     }
     
     func depositFieldViewDidSelectShowQRCode(_ view: DepositFieldView) {

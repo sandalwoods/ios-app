@@ -60,7 +60,7 @@ class RecognizeWindow: BottomSheetView {
     private func copyContent() {
         UIPasteboard.general.string = contentTextView.text
         dismissPopupControllerAnimated()
-        showAutoHiddenHud(style: .notification, text: Localized.TOAST_COPIED)
+        showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_copied())
     }
     
     @discardableResult private func open(_ url: URL) -> Bool {

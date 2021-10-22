@@ -544,7 +544,7 @@ class ConversationViewController: UIViewController {
             let viewModels = dataSource.selectedViewModels.values.map({ $0 })
             let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             if !viewModels.contains(where: { $0.message.userId != myUserId || !$0.message.canRecall }) {
-                controller.addAction(UIAlertAction(title: Localized.ACTION_DELETE_EVERYONE, style: .destructive, handler: { (_) in
+                controller.addAction(UIAlertAction(title: R.string.localizable.action_delete_everyone(), style: .destructive, handler: { (_) in
                     if AppGroupUserDefaults.User.hasShownRecallTips {
                         self.deleteForEveryone(viewModels: viewModels)
                     } else {
@@ -552,10 +552,10 @@ class ConversationViewController: UIViewController {
                     }
                 }))
             }
-            controller.addAction(UIAlertAction(title: Localized.ACTION_DELETE_ME, style: .destructive, handler: { (_) in
+            controller.addAction(UIAlertAction(title: R.string.localizable.action_delete_me(), style: .destructive, handler: { (_) in
                 self.deleteForMe(viewModels: viewModels)
             }))
-            controller.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+            controller.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
             self.present(controller, animated: true, completion: nil)
         }
     }
@@ -948,8 +948,8 @@ class ConversationViewController: UIViewController {
         }
         
         let conversationId = self.conversationId
-        let alc = UIAlertController(title: Localized.REPORT_TITLE, message: MixinHost.http, preferredStyle: .actionSheet)
-        alc.addAction(UIAlertAction(title: Localized.REPORT_BUTTON, style: .default, handler: { (_) in
+        let alc = UIAlertController(title: R.string.localizable.report_title(), message: MixinHost.http, preferredStyle: .actionSheet)
+        alc.addAction(UIAlertAction(title: R.string.localizable.report_button(), style: .default, handler: { (_) in
             self.report(conversationId: conversationId)
         }))
         alc.addAction(UIAlertAction(title: R.string.localizable.report_share(), style: .default, handler: { (_) in
@@ -972,7 +972,7 @@ class ConversationViewController: UIViewController {
             }))
         }
         
-        alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         self.present(alc, animated: true, completion: nil)
     }
     
@@ -1935,7 +1935,7 @@ extension ConversationViewController {
                     case let .success(sticker):
                         DispatchQueue.global().async {
                             StickerDAO.shared.insertOrUpdateFavoriteSticker(sticker: sticker)
-                            showAutoHiddenHud(style: .notification, text: Localized.TOAST_ADDED)
+                            showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_added())
                         }
                     case let .failure(error):
                         showAutoHiddenHud(style: .error, text: error.localizedDescription)
@@ -2067,7 +2067,7 @@ extension ConversationViewController {
                     weakSelf.isMember = isParticipant
                     weakSelf.conversationInputViewController.deleteConversationButton.isHidden = true
                     weakSelf.conversationInputViewController.inputBarView.isHidden = false
-                    weakSelf.subtitleLabel.text = Localized.GROUP_SECTION_TITLE_MEMBERS(count: count)
+                    weakSelf.subtitleLabel.text = R.string.localizable.group_section_title_members(count > 0 ? "\(count) " : "")
                 }
             } else {
                 DispatchQueue.main.sync {
@@ -2080,7 +2080,7 @@ extension ConversationViewController {
                     weakSelf.isMember = isParticipant
                     weakSelf.conversationInputViewController.deleteConversationButton.isHidden = false
                     weakSelf.conversationInputViewController.inputBarView.isHidden = false
-                    weakSelf.subtitleLabel.text = Localized.GROUP_REMOVE_TITLE
+                    weakSelf.subtitleLabel.text = R.string.localizable.group_remove_title()
                 }
             }
         }
@@ -2779,7 +2779,7 @@ extension ConversationViewController {
             AppGroupUserDefaults.User.hasShownRecallTips = true
             UIApplication.shared.openURL(url: "https://mixinmessenger.zendesk.com/hc/articles/360028209571")
         }))
-        alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_OK, style: .default, handler: { (_) in
+        alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_ok(), style: .default, handler: { (_) in
             AppGroupUserDefaults.User.hasShownRecallTips = true
             self.deleteForEveryone(viewModels: viewModels)
         }))
@@ -2816,15 +2816,15 @@ extension ConversationViewController {
             return
         }
         let alert = UIAlertController(title: url.absoluteString, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: Localized.CHAT_MESSAGE_OPEN_URL, style: .default, handler: { [weak self](_) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.chat_message_open_url(), style: .default, handler: { [weak self](_) in
             self?.open(url: url)
         }))
-        alert.addAction(UIAlertAction(title: Localized.CHAT_MESSAGE_MENU_COPY, style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.chat_message_menu_copy(), style: .default, handler: { (_) in
             UIPasteboard.general.string = url.absoluteString
-            showAutoHiddenHud(style: .notification, text: Localized.TOAST_COPIED)
+            showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_copied())
             
         }))
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     

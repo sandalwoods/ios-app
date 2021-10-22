@@ -16,7 +16,7 @@ class WalletViewController: UIViewController, MixinNavigationAnimating {
     private var assets = [AssetItem]()
     
     private lazy var assetActions: [UITableViewRowAction] = {
-        let action = UITableViewRowAction(style: .destructive, title: Localized.ACTION_HIDE, handler: { [weak self] (_, indexPath) in
+        let action = UITableViewRowAction(style: .destructive, title: R.string.localizable.action_hide(), handler: { [weak self] (_, indexPath) in
             self?.confirmHideAsset(at: indexPath)
         })
         action.backgroundColor = .theme

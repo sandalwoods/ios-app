@@ -28,7 +28,7 @@ class DepositTipWindow: BottomSheetView {
 
     func render(asset: AssetItem) -> DepositTipWindow {
         self.asset = asset
-        titleLabel.text = "\(asset.symbol) \(Localized.WALLET_DEPOSIT)"
+        titleLabel.text = "\(asset.symbol) \(R.string.localizable.wallet_deposit())"
         tipsLabel.text = asset.depositTips
         if !asset.tag.isEmpty {
             continueButton.setTitle("\(R.string.localizable.dialog_button_got_it())(\(self.countDown))", for: .normal)

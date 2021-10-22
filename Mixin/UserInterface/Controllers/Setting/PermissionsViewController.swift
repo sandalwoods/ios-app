@@ -61,8 +61,8 @@ final class PermissionsViewController: UIViewController {
         let appHomeUri = authorization.app.homeUri
         let appId = self.authorization.app.appId
         let alert = UIAlertController(title: R.string.localizable.setting_revoke_confirmation(authorization.app.name), message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CONFIRM, style: .destructive, handler: { (action) in
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dialog_button_confirm(), style: .destructive, handler: { (action) in
             AuthorizeAPI.cancel(clientId: appId) { [weak self](result) in
                 switch result {
                 case .success:

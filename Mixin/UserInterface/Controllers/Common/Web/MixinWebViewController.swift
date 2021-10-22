@@ -466,7 +466,7 @@ extension MixinWebViewController {
     
     private func copyAction(currentUrl: URL) {
         UIPasteboard.general.string = currentUrl.absoluteString
-        showAutoHiddenHud(style: .notification, text: Localized.TOAST_COPIED)
+        showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_copied())
     }
 
     private func shareAppCardAction(currentUrl: URL) {

@@ -20,7 +20,7 @@ class QrcodeWindow: BottomSheetView {
             return
         }
         render(title: conversation.name,
-               description: Localized.GROUP_QR_CODE_PROMPT,
+               description: R.string.localizable.group_qr_code_prompt(),
                qrcode: conversationCodeUrl,
                qrcodeForegroundColor: .black)
         avatarImageView.isHidden = false
@@ -30,8 +30,8 @@ class QrcodeWindow: BottomSheetView {
     }
     
     func render(title: String, description: String, account: Account) {
-        render(title: Localized.CONTACT_MY_QR_CODE,
-               description: Localized.MYQRCODE_PROMPT,
+        render(title: R.string.localizable.contact_my_qr_code(),
+               description: R.string.localizable.myqrcode_prompt(),
                qrcode: account.code_url,
                qrcodeForegroundColor: .systemTint)
         avatarImageView.isHidden = false
@@ -97,7 +97,7 @@ class QrcodeWindow: BottomSheetView {
             DispatchQueue.main.async {
                 self?.dismissPopupControllerAnimated()
                 if success {
-                    showAutoHiddenHud(style: .notification, text: Localized.TOAST_SAVED)
+                    showAutoHiddenHud(style: .notification, text: R.string.localizable.toast_saved())
                 } else {
                     showAutoHiddenHud(style: .notification, text: R.string.localizable.error_operation_failed())
                 }

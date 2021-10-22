@@ -66,13 +66,13 @@ final class PinSettingsViewController: SettingsTableViewController {
         }
         if AppGroupUserDefaults.Wallet.payWithBiometricAuthentication {
             let type = biometryType == .touchID ? R.string.localizable.wallet_touch_id() : R.string.localizable.wallet_face_id()
-            let title = Localized.WALLET_DISABLE_BIOMETRIC_PAY(biometricType: type)
+            let title = R.string.localizable.wallet_disable_biometric_pay(type)
             let alc = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: { (_) in
+            alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: { (_) in
                 self.isBiometricPaymentChangingInProgress = true
                 self.biometricSwitchRow.accessory = .switch(isOn: AppGroupUserDefaults.Wallet.payWithBiometricAuthentication)
             }))
-            alc.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_DISABLE, style: .default, handler: { (_) in
+            alc.addAction(UIAlertAction(title: R.string.localizable.dialog_button_disable(), style: .default, handler: { (_) in
                 Keychain.shared.clearPIN()
                 AppGroupUserDefaults.Wallet.payWithBiometricAuthentication = false
                 self.isBiometricPaymentChangingInProgress = true
@@ -82,10 +82,10 @@ final class PinSettingsViewController: SettingsTableViewController {
         } else {
             let tips: String, prompt: String
             if biometryType == .touchID {
-                tips = Localized.WALLET_PIN_TOUCH_ID_PROMPT
+                tips = R.string.localizable.wallet_pin_touch_id_prompt()
                 prompt = R.string.localizable.wallet_store_encrypted_pin(R.string.localizable.wallet_touch_id())
             } else {
-                tips = Localized.WALLET_PIN_FACE_ID_PROMPT
+                tips = R.string.localizable.wallet_pin_face_id_prompt()
                 prompt = R.string.localizable.wallet_store_encrypted_pin(R.string.localizable.wallet_face_id())
             }
             let validator = PinValidationViewController(tips: tips, onSuccess: { (pin) in
@@ -115,7 +115,7 @@ extension PinSettingsViewController: UITableViewDelegate {
             if indexPath.row == 1 {
                 let alert = UIAlertController(title: nil, message: R.string.localizable.wallet_pin_pay_interval_tips(), preferredStyle: .actionSheet)
                 for interval in pinIntervals {
-                    alert.addAction(UIAlertAction(title: Localized.WALLET_PIN_PAY_INTERVAL(interval), style: .default, handler: { (_) in
+                    alert.addAction(UIAlertAction(title: walletPinPayIntervalMinutes(interval), style: .default, handler: { (_) in
                         self.setNewPinInterval(interval: interval)
                     }))
                 }
@@ -133,7 +133,7 @@ extension PinSettingsViewController: UITableViewDelegate {
 extension PinSettingsViewController {
     
     private func setNewPinInterval(interval: Double) {
-        let validator = PinValidationViewController(tips: Localized.WALLET_PIN_PAY_INTERVAL_CONFIRM, onSuccess: { (_) in
+        let validator = PinValidationViewController(tips: R.string.localizable.wallet_pin_pay_interval_confirm(), onSuccess: { (_) in
             AppGroupUserDefaults.Wallet.biometricPaymentExpirationInterval = interval
             self.updatePinIntervalRow()
         })
@@ -147,11 +147,21 @@ extension PinSettingsViewController {
         let expirationInterval = AppGroupUserDefaults.Wallet.biometricPaymentExpirationInterval
         let hour: Double = 60 * 60
         if expirationInterval < hour {
-            pinIntervalRow.subtitle = Localized.WALLET_PIN_PAY_INTERVAL_MINUTES(expirationInterval).lowercased()
+            pinIntervalRow.subtitle = R.string.localizable.wallet_pin_pay_interval_minutes(Int(expirationInterval)).lowercased()
         } else if expirationInterval == hour {
             pinIntervalRow.subtitle = R.string.localizable.wallet_pin_pay_interval_hour()
         } else {
-            pinIntervalRow.subtitle = Localized.WALLET_PIN_PAY_INTERVAL_HOURS(expirationInterval).lowercased()
+            pinIntervalRow.subtitle = R.string.localizable.wallet_pin_pay_interval_hours(Int(expirationInterval)).lowercased()
+        }
+    }
+    
+    private func walletPinPayIntervalMinutes(_ seconds: Double) -> String {
+        if seconds < 60 * 60 {
+            return R.string.localizable.wallet_pin_pay_interval_minutes(Int(seconds))
+        } else if seconds == 60 * 60 {
+            return R.string.localizable.wallet_pin_pay_interval_hour()
+        } else {
+            return R.string.localizable.wallet_pin_pay_interval_hours(Int(seconds))
         }
     }
     

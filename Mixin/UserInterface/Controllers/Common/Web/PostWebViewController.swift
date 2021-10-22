@@ -65,7 +65,7 @@ class PostWebViewController: WebViewController {
                 self.exportAsPDF(to: url)
             }))
         }
-        controller.addAction(UIAlertAction(title: Localized.DIALOG_BUTTON_CANCEL, style: .cancel, handler: nil))
+        controller.addAction(UIAlertAction(title: R.string.localizable.dialog_button_cancel(), style: .cancel, handler: nil))
         present(controller, animated: true, completion: nil)
     }
     

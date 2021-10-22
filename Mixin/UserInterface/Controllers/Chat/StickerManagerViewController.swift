@@ -18,7 +18,7 @@ class StickerManagerViewController: UICollectionViewController {
     
     class func instance() -> UIViewController {
         let vc = R.storyboard.chat.sticker_manager()!
-        return ContainerViewController.instance(viewController: vc, title: Localized.STICKER_MANAGER_TITLE)
+        return ContainerViewController.instance(viewController: vc, title: R.string.localizable.sticker_manager_title())
     }
     
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ extension StickerManagerViewController: ContainerViewControllerDelegate {
     func barRightButtonTappedAction() {
         if isDeleteStickers {
             guard !(container?.rightButton.isBusy ?? true), let selectionCells = collectionView?.indexPathsForSelectedItems, selectionCells.count > 0 else {
-                container?.rightButton.setTitle(Localized.ACTION_SELECT, for: .normal)
+                container?.rightButton.setTitle(R.string.localizable.action_select(), for: .normal)
                 isDeleteStickers = false
                 collectionView?.allowsMultipleSelection = false
                 collectionView?.reloadData()
@@ -84,7 +84,7 @@ extension StickerManagerViewController: ContainerViewControllerDelegate {
                             guard let weakSelf = self else {
                                 return
                             }
-                            weakSelf.container?.rightButton.setTitle(Localized.ACTION_SELECT, for: .normal)
+                            weakSelf.container?.rightButton.setTitle(R.string.localizable.action_select(), for: .normal)
                             weakSelf.isDeleteStickers = !weakSelf.isDeleteStickers
                             weakSelf.collectionView?.allowsMultipleSelection = false
                             weakSelf.fetchStickers()
@@ -95,7 +95,7 @@ extension StickerManagerViewController: ContainerViewControllerDelegate {
                 }
             })
         } else {
-            container?.rightButton.setTitle(Localized.ACTION_REMOVE, for: .normal)
+            container?.rightButton.setTitle(R.string.localizable.action_remove(), for: .normal)
             isDeleteStickers = true
             collectionView?.allowsMultipleSelection = true
             collectionView?.reloadData()
@@ -103,7 +103,7 @@ extension StickerManagerViewController: ContainerViewControllerDelegate {
     }
 
     func textBarRightButton() -> String? {
-        return Localized.ACTION_SELECT
+        return R.string.localizable.action_select()
     }
 
 }

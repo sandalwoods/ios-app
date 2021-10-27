@@ -92,7 +92,7 @@ extension PrivacyViewController {
             } else if timeInterval == 60 {
                 return R.string.localizable.setting_screen_lock_timeout_one_minute()
             } else {
-                return R.string.localizable.setting_screen_lock_timeout_minutes("\(Int(timeInterval / 60))")
+                return R.string.localizable.setting_screen_lock_timeout_minutes(Int(timeInterval / 60))
             }
         } else {
             return R.string.localizable.setting_screen_lock_timeout_off();

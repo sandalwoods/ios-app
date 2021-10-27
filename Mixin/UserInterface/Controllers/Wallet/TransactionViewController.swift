@@ -266,7 +266,7 @@ extension TransactionViewController {
         case SnapshotType.deposit.rawValue, SnapshotType.pendingDeposit.rawValue:
             contents.append((title: R.string.localizable.transaction_type(), subtitle: R.string.localizable.transaction_type_deposit()))
             if snapshot.type == SnapshotType.pendingDeposit.rawValue, let finished = snapshot.confirmations, let total = asset?.confirmations {
-                contents.append((title: R.string.localizable.transaction_status(), subtitle: R.string.localizable.pending_deposit_confirmation("\(finished)/\(total)")))
+                contents.append((title: R.string.localizable.transaction_status(), subtitle: R.string.localizable.pending_deposit_confirmation(finished, total)))
             }
             contents.append((title: R.string.localizable.transaction_hash(), subtitle: snapshot.transactionHash))
             if snapshot.hasSender {

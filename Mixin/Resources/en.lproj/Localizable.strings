@@ -574,7 +574,7 @@
 "transactions_filter_sort_by_amount" = "Amount";
 "transactions_filter_filter_by" = "Filter by";
 "transactions_filter_filter_by_all" = "All";
-"pending_deposit_confirmation" = "%@ Confirmations";
+"pending_deposit_confirmation" = "%d/%d Confirmations";
 "pending_deposit_hint" = "Pending";
 "wallet_asset_symbol" = "Symbol";
 "wallet_asset_chain" = "Chain";
@@ -893,7 +893,7 @@
 "setting_screen_lock_enable_biometric_tip" = "You’ll need to user %@ to unlock Mixin. you can still reply to messages from notifications and anwser calls if Mixin is locked.";
 "setting_screen_lock_timeout_immediately" = "Immediately";
 "setting_screen_lock_timeout_one_minute" = "1 Minute";
-"setting_screen_lock_timeout_minutes" = "%@ Minutes";
+"setting_screen_lock_timeout_minutes" = "%d Minutes";
 "setting_screen_lock_timeout_hour" = "1 Hour";
 "setting_screen_lock_timeout_off" = "Off";
 

@@ -68,7 +68,7 @@ class SnapshotCell: ModernSelectedBackgroundCell {
         case SnapshotType.pendingDeposit.rawValue:
             amountLabel.textColor = .walletGray
             if let finished = snapshot.confirmations, let total = asset?.confirmations {
-                titleLabel.text = R.string.localizable.pending_deposit_confirmation("\(finished)/\(total)")
+                titleLabel.text = R.string.localizable.pending_deposit_confirmation(finished, total)
             } else {
                 titleLabel.text = nil
             }

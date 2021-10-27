@@ -11,7 +11,7 @@ class ChangeNumberVerificationCodeViewController: VerificationCodeViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = R.string.localizable.navigation_title_enter_verification_code( context.newNumberRepresentation)
+        titleLabel.text = R.string.localizable.navigation_title_enter_verification_code(context.newNumberRepresentation)
     }
     
     override func verificationCodeFieldEditingChanged(_ sender: Any) {

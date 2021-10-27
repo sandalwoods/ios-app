@@ -575,7 +575,7 @@
 "transactions_filter_sort_by_amount" = "金额";
 "transactions_filter_filter_by" = "筛选";
 "transactions_filter_filter_by_all" = "全部";
-"pending_deposit_confirmation" = "%@ 区块确认数";
+"pending_deposit_confirmation" = "%d/%d 区块确认数";
 "pending_deposit_hint" = "待入账";
 "wallet_asset_symbol" = "符号";
 "wallet_asset_chain" = "所属公链";
@@ -894,7 +894,7 @@
 "setting_screen_lock_enable_biometric_tip" = "您需要使用%@来解锁 Mixin。当 Mixin 锁定时，您仍可以接听通话或在通知中回复消息。";
 "setting_screen_lock_timeout_immediately" = "立即";
 "setting_screen_lock_timeout_one_minute" = "1 分钟";
-"setting_screen_lock_timeout_minutes" = "%@ 分钟";
+"setting_screen_lock_timeout_minutes" = "%d 分钟";
 "setting_screen_lock_timeout_hour" = "1 小时";
 "setting_screen_lock_timeout_off" = "关闭";
 

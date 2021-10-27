@@ -368,7 +368,7 @@ class TransferOutViewController: KeyboardBasedLayoutViewController {
             var ranges = [(hint as NSString).range(of: feeRepresentation)]
             if address.reserve.doubleValue > 0 {
                 let reserveRepresentation = address.reserve + " " + chainAsset.symbol
-                let reserveHint = R.string.localizable.wallet_withdrawal_reserve(reserveRepresentation, chainAsset.name)
+                let reserveHint = R.string.localizable.wallet_withdrawal_reserve(chainAsset.name, reserveRepresentation)
                 let reserveRange = (reserveHint as NSString).range(of: reserveRepresentation)
                 ranges.append(NSRange(location: hint.count + reserveRange.location, length: reserveRange.length))
                 hint += reserveHint

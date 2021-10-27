@@ -115,7 +115,7 @@ extension PinSettingsViewController: UITableViewDelegate {
             if indexPath.row == 1 {
                 let alert = UIAlertController(title: nil, message: R.string.localizable.wallet_pin_pay_interval_tips(), preferredStyle: .actionSheet)
                 for interval in pinIntervals {
-                    alert.addAction(UIAlertAction(title: walletPinPayIntervalMinutes(interval), style: .default, handler: { (_) in
+                    alert.addAction(UIAlertAction(title: walletPinPayInterval(interval), style: .default, handler: { (_) in
                         self.setNewPinInterval(interval: interval)
                     }))
                 }
@@ -147,21 +147,21 @@ extension PinSettingsViewController {
         let expirationInterval = AppGroupUserDefaults.Wallet.biometricPaymentExpirationInterval
         let hour: Double = 60 * 60
         if expirationInterval < hour {
-            pinIntervalRow.subtitle = R.string.localizable.wallet_pin_pay_interval_minutes(Int(expirationInterval)).lowercased()
+            pinIntervalRow.subtitle = R.string.localizable.wallet_pin_pay_interval_minutes(Int(expirationInterval / 60)).lowercased()
         } else if expirationInterval == hour {
             pinIntervalRow.subtitle = R.string.localizable.wallet_pin_pay_interval_hour()
         } else {
-            pinIntervalRow.subtitle = R.string.localizable.wallet_pin_pay_interval_hours(Int(expirationInterval)).lowercased()
+            pinIntervalRow.subtitle = R.string.localizable.wallet_pin_pay_interval_hours(Int(expirationInterval / 3600)).lowercased()
         }
     }
     
-    private func walletPinPayIntervalMinutes(_ seconds: Double) -> String {
+    private func walletPinPayInterval(_ seconds: Double) -> String {
         if seconds < 60 * 60 {
-            return R.string.localizable.wallet_pin_pay_interval_minutes(Int(seconds))
+            return R.string.localizable.wallet_pin_pay_interval_minutes(Int(seconds / 60))
         } else if seconds == 60 * 60 {
             return R.string.localizable.wallet_pin_pay_interval_hour()
         } else {
-            return R.string.localizable.wallet_pin_pay_interval_hours(Int(seconds))
+            return R.string.localizable.wallet_pin_pay_interval_hours(Int(seconds / 3600))
         }
     }
     

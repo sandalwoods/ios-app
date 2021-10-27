@@ -92,7 +92,7 @@ extension ScreenLockSettingViewController {
         } else if seconds == 60 {
             return R.string.localizable.setting_screen_lock_timeout_one_minute()
         } else {
-            return R.string.localizable.setting_screen_lock_timeout_minutes("\(Int(seconds / 60))")
+            return R.string.localizable.setting_screen_lock_timeout_minutes(Int(seconds / 60))
         }
     }
     

@@ -4,7 +4,7 @@ import YYImage
 
 public enum StickerPrefetcher {
     
-    private static var prefetchTokens: [String: SDWebImagePrefetchToken] = [:]
+    private static var prefetchTokens = SafeDictionary<String, SDWebImagePrefetchToken>()
     
     public static let persistent: SDWebImagePrefetcher = {
         let prefetcher = SDWebImagePrefetcher(imageManager: .persistentSticker)
